@@ -85,3 +85,455 @@ jupyter notebook dyson_patent_text_mining.ipynb
 | 9 |  58 | Brushless Motor / Compressor Rotor-Stator Assemblies |
 | 10 | 130 | Cleaning appliances: dental fluid-jet devices and vacuum floor tools |
 | 11 | 206 | Wearable air purification and air-treatment appliances |
+
+## Cluster별 추출 결과 (LLM)
+
+아래 표는 각 cluster에 대해 LLM이 추출한 **module / functional element / physical element** 를 정리한 것이다.
+근거(evidence)·confidence 까지 포함된 전체 표는 `outputs/cluster_*.csv` 참고.
+
+<details><summary><b>Cluster 0</b> &nbsp;|&nbsp; 107 patents &nbsp;|&nbsp; Thin-film solid-state battery fabrication via sputter deposition</summary>
+
+**Modules (6)**
+  - **electrode layer module**
+  - **electrolyte layer module**
+  - **substrate module**
+  - **stack assembly module**
+  - **sputter deposition module**  _(confidence: medium)_
+  - **current collector module**  _(confidence: low)_
+
+**Functional elements (8)** — 동사구
+  - **store energy**
+  - **deposit electrolyte material**
+  - **deposit electrode material on substrate**
+  - **provide electrode layer on substrate**
+  - **separate adjacent stacks with a groove**
+  - **conduct ions between electrodes**  _(confidence: medium)_
+  - **sputter deposit layers**  _(confidence: medium)_
+  - **form solid-state electrochemical cell**
+
+**Physical elements (10)** — 명사구
+  - **substrate**
+  - **first electrode layer**
+  - **second electrode layer**
+  - **electrolyte layer**
+  - **stack**
+  - **groove**
+  - **cathode**  _(confidence: medium)_
+  - **sputter target**  _(confidence: medium)_
+  - **current collector**  _(confidence: low)_
+  - **solid-state electrochemical cell component**
+
+**Notes**
+  - _uncertain_: Existence of a dedicated sputter deposition module is inferred from top terms rather than explicit abstract text.
+  - _uncertain_: Current collector is referenced only by a truncated abstract fragment.
+  - _insufficient evidence_: Specific battery chemistry (e.g., lithium) is not explicitly stated in provided abstracts.
+  - _insufficient evidence_: Packaging, encapsulation, or thermal management modules are not described in the provided evidence.
+
+</details>
+
+<details><summary><b>Cluster 1</b> &nbsp;|&nbsp; 115 patents &nbsp;|&nbsp; Haircare/Styling Appliances with Airflow Attachments</summary>
+
+**Modules (3)**
+  - **airflow generation module**
+  - **hair styling attachment module**
+  - **airflow shaping/guiding surface module**  _(confidence: medium)_
+
+**Functional elements (7)** — 동사구
+  - **generate airflow**
+  - **receive air**
+  - **emit airflow**
+  - **attach accessory to haircare appliance**
+  - **style hair**
+  - **guide airflow along curved surface**  _(confidence: medium)_
+  - **diffuse airflow**  _(confidence: medium)_
+
+**Physical elements (7)** — 명사구
+  - **air inlet**
+  - **air outlet**
+  - **airflow generator**
+  - **attachment**
+  - **curved surface**
+  - **flat surface**  _(confidence: medium)_
+  - **diffuser**  _(confidence: medium)_
+
+**Notes**
+  - _uncertain_: Diffuser is listed in top title terms but not explicitly described in provided abstracts; its specific function is inferred only at a high level.
+  - _uncertain_: Flat surface role is partially described and its specific function is not fully detailed.
+  - _insufficient evidence_: No explicit evidence of heating, temperature control, or motor-specific components in the provided text.
+  - _insufficient evidence_: No explicit evidence of power/battery module in the provided text.
+
+</details>
+
+<details><summary><b>Cluster 2</b> &nbsp;|&nbsp; 92 patents &nbsp;|&nbsp; Handheld Appliance Fluid Flow Architecture (Hairdryer-class)</summary>
+
+**Modules (5)**
+  - **fluid flow path module**
+  - **appliance body module**
+  - **duct module**
+  - **heater assembly module**  _(confidence: medium)_
+  - **attachment module**  _(confidence: medium)_
+
+**Functional elements (8)** — 동사구
+  - **admit fluid into the appliance**
+  - **emit fluid flow from the appliance**
+  - **convey fluid from inlet to outlet**
+  - **line the duct with a material**
+  - **guide fluid flow in an axial direction**
+  - **heat fluid**  _(confidence: medium)_
+  - **attach accessory to appliance**  _(confidence: medium)_
+  - **clean**  _(confidence: low)_
+
+**Physical elements (9)** — 명사구
+  - **body**
+  - **duct**
+  - **fluid inlet**
+  - **fluid outlet**
+  - **primary fluid flow path**
+  - **duct lining material**
+  - **wall**  _(confidence: medium)_
+  - **heater assembly**  _(confidence: medium)_
+  - **attachment**  _(confidence: medium)_
+
+**Notes**
+  - _uncertain_: Heater assembly and attachment modules are inferred from top title terms but not explicitly described in the example abstracts.
+  - _uncertain_: Cleaning function appears in title terms but is not supported by the provided example abstracts which focus on hairdryers.
+  - _insufficient evidence_: Specific structure of heater assembly
+  - _insufficient evidence_: Specific types of attachments and how they connect
+  - _insufficient evidence_: Cleaning appliance configuration
+
+</details>
+
+<details><summary><b>Cluster 3</b> &nbsp;|&nbsp; 91 patents &nbsp;|&nbsp; Sensor-driven smart vacuum cleaners and mobile cleaning robots</summary>
+
+**Modules (7)**
+  - **airflow generation module**
+  - **cleaner head module**
+  - **sensing module**
+  - **control and processing module**
+  - **mobile robot platform module**  _(confidence: medium)_
+  - **hairstyling attachment module**  _(confidence: low)_
+  - **oral treatment module**  _(confidence: low)_
+
+**Functional elements (7)** — 동사구
+  - **generate airflow**
+  - **agitate surface debris**
+  - **sense motion and orientation**
+  - **generate sensor signals**
+  - **process sensor signals**
+  - **determine surface type**
+  - **perform diagnostics**  _(confidence: medium)_
+
+**Physical elements (8)** — 명사구
+  - **vacuum motor**
+  - **cleaner head**
+  - **agitator**
+  - **motion and orientation sensor**
+  - **diagnostic sensors**
+  - **controller**
+  - **first and second controller modules**
+  - **surface type model**
+
+**Notes**
+  - _uncertain_: Whether 'mobile robot' refers to robotic vacuum cleaner variants within this cluster - title terms suggest yes but no abstract evidence shown.
+  - _uncertain_: Presence of 'hairstyling' and 'oral treatment' title terms suggests heterogeneous cluster contents beyond vacuum cleaners.
+  - _insufficient evidence_: No abstracts provided for hairstyling or oral treatment products, so corresponding modules and functions cannot be reliably extracted.
+  - _insufficient evidence_: The role of 'light' (top tfidf term) is not explained in any provided abstract.
+
+</details>
+
+<details><summary><b>Cluster 4</b> &nbsp;|&nbsp; 125 patents &nbsp;|&nbsp; Vacuum Cleaner Head with Agitator/Brush Bar</summary>
+
+**Modules (5)**
+  - **cleaner head housing module**
+  - **agitator module**
+  - **suction airflow module**
+  - **debris illumination module**  _(confidence: medium)_
+  - **dirt separator module**  _(confidence: low)_
+
+**Functional elements (9)** — 동사구
+  - **define a suction chamber**
+  - **engage a surface to be cleaned**
+  - **provide fluid connection to a suction generator**
+  - **illuminate debris on a work surface**
+  - **agitate surface debris**
+  - **drive the agitator about an axis**
+  - **rotate the drive mechanism relative to the housing**  _(confidence: medium)_
+  - **mount agitator elements on opposing sides of the housing**  _(confidence: medium)_
+  - **separate dirt from airflow**  _(confidence: low)_
+
+**Physical elements (13)** — 명사구
+  - **cleaner head**
+  - **housing**
+  - **body**
+  - **suction chamber**
+  - **suction inlet**
+  - **outlet**
+  - **agitator**
+  - **brush bar**
+  - **drive mechanism**
+  - **laser diode**
+  - **first agitator element**
+  - **second agitator element**  _(confidence: medium)_
+  - **dirt separator**  _(confidence: low)_
+
+**Notes**
+  - _uncertain_: dirt separator module is suggested by title terms but no abstract evidence is provided
+  - _uncertain_: second agitator element function is truncated in the abstract
+  - _insufficient evidence_: specific separation mechanism for dirt separator
+  - _insufficient evidence_: materials of housing, agitator, or brush bar
+
+</details>
+
+<details><summary><b>Cluster 5</b> &nbsp;|&nbsp; 166 patents &nbsp;|&nbsp; Surface treating appliance main body & support assembly architecture</summary>
+
+**Modules (7)**
+  - **main body**
+  - **surface treating head**
+  - **support assembly**
+  - **hose and wand assembly**
+  - **airflow generation module**
+  - **handle**
+  - **flow change-over valve**  _(confidence: medium)_
+
+**Functional elements (7)** — 동사구
+  - **generate flow of fluid**
+  - **treat a surface**
+  - **roll main body along a surface**
+  - **support the main body**
+  - **operate appliance by user**
+  - **convey air between components**  _(confidence: medium)_
+  - **switch airflow path**  _(confidence: medium)_
+
+**Physical elements (10)** — 명사구
+  - **main body**
+  - **surface treating head**
+  - **support assembly**
+  - **handle**
+  - **hose**
+  - **wand assembly**
+  - **motor**
+  - **fan**
+  - **rotary change over valve**
+  - **dome-shaped wheels**  _(confidence: medium)_
+
+**Notes**
+  - _uncertain_: The function of the rotary change over valve is inferred from its name; abstracts do not explicitly describe what paths it switches.
+  - _uncertain_: Robotic and domestic appliance variants appear in title terms but are not detailed in abstracts.
+  - _insufficient evidence_: Filtration, dust collection, or cyclone separation modules are not described in the provided abstracts even though typical for vacuum cleaners.
+  - _insufficient evidence_: Battery/power module not mentioned in provided text.
+
+</details>
+
+<details><summary><b>Cluster 6</b> &nbsp;|&nbsp; 130 patents &nbsp;|&nbsp; Multi-stage cyclonic dirt/dust separation for vacuum cleaners</summary>
+
+**Modules (5)**
+  - **cyclonic separating module**
+  - **multistage cyclonic separation module**
+  - **dust collection module**
+  - **handheld cleaning appliance module**
+  - **airflow path module**
+
+**Functional elements (7)** — 동사구
+  - **separate dirt and dust from airflow**
+  - **perform cyclonic separation**
+  - **perform multistage separation**
+  - **collect dust**
+  - **admit dirty air**
+  - **discharge clean air**
+  - **guide airflow from inlet to outlet**
+
+**Physical elements (9)** — 명사구
+  - **first cyclonic separating unit**
+  - **second cyclonic separating unit**
+  - **first cyclone**
+  - **second cyclone**
+  - **annular dust collecting chamber**
+  - **dirty air inlet**
+  - **clean air outlet**
+  - **airflow path**
+  - **handheld cleaning appliance body**  _(confidence: medium)_
+
+**Notes**
+  - _uncertain_: Whether the handheld cleaning appliance body is a distinct physical element or only the overall product housing is not explicitly described.
+  - _insufficient evidence_: No explicit mention of motor, impeller, or filter within the provided abstracts, although such components are typical of vacuum cleaners.
+
+</details>
+
+<details><summary><b>Cluster 7</b> &nbsp;|&nbsp; 98 patents &nbsp;|&nbsp; Bladeless nozzle-based fan assemblies</summary>
+
+**Modules (4)**
+  - **airflow generation module**
+  - **nozzle air emission module**
+  - **base housing module**
+  - **humidifying module**  _(confidence: low)_
+
+**Functional elements (6)** — 동사구
+  - **create an air current**
+  - **rotate the impeller**
+  - **generate air flow from inlet to outlet**
+  - **receive air flow from interior passage**
+  - **emit air flow**
+  - **humidify air**  _(confidence: low)_
+
+**Physical elements (8)** — 명사구
+  - **impeller**
+  - **motor**
+  - **air inlet**
+  - **air outlet**
+  - **nozzle**
+  - **interior passage**
+  - **mouth**
+  - **base**
+
+**Notes**
+  - _uncertain_: humidifying module is suggested only by a title term and lacks abstract-level evidence in the provided examples
+  - _insufficient evidence_: specific control electronics, power source, or oscillation mechanisms are not described in provided text
+
+</details>
+
+<details><summary><b>Cluster 8</b> &nbsp;|&nbsp; 89 patents &nbsp;|&nbsp; Brushless (permanent-magnet) motor control via winding excitation</summary>
+
+**Modules (5)**
+  - **brushless motor control module**
+  - **motor winding excitation module**
+  - **AC-to-DC rectification module**
+  - **permanent-magnet rotor module**  _(confidence: medium)_
+  - **current sensing and threshold module**  _(confidence: medium)_
+
+**Functional elements (8)** — 동사구
+  - **control a brushless motor**
+  - **excite a motor winding with a voltage**
+  - **freewheel the winding**
+  - **sense winding current**
+  - **rectify an alternating voltage**
+  - **continue exciting winding for an overrun period**
+  - **terminate excitation after a timeout period**
+  - **provide rectified voltage with ripple**
+
+**Physical elements (7)** — 명사구
+  - **brushless motor**
+  - **permanent-magnet motor**
+  - **phase winding**
+  - **rectifier**
+  - **alternating voltage supply**  _(confidence: medium)_
+  - **current sensor**  _(confidence: medium)_
+  - **motor controller**  _(confidence: medium)_
+
+**Notes**
+  - _uncertain_: The presence of a dedicated current sensor and motor controller is inferred from control actions but not explicitly named as components in the abstracts.
+  - _uncertain_: Permanent-magnet rotor module is supported only by the term 'permanent-magnet motor' without explicit rotor structure details.
+  - _insufficient evidence_: No explicit evidence of inverter/switching bridge topology, gate drivers, or specific control IC.
+  - _insufficient evidence_: No explicit evidence of position/Hall sensors despite control of brushless motors typically requiring them.
+
+</details>
+
+<details><summary><b>Cluster 9</b> &nbsp;|&nbsp; 58 patents &nbsp;|&nbsp; Brushless Motor / Compressor Rotor-Stator Assemblies</summary>
+
+**Modules (6)**
+  - **rotor assembly module**
+  - **stator assembly module**
+  - **bearing assembly module**
+  - **motor frame / housing module**
+  - **impeller module**  _(confidence: medium)_
+  - **heat sink module**  _(confidence: medium)_
+
+**Functional elements (8)** — 동사구
+  - **rotate relative to the stator**
+  - **house the stator and rotor assemblies**
+  - **support the rotor shaft**
+  - **mount the bearing assembly to the frame**
+  - **move air via impeller rotation**  _(confidence: medium)_
+  - **dissipate heat**  _(confidence: medium)_
+  - **compress fluid**  _(confidence: medium)_
+  - **bond components with adhesive**  _(confidence: low)_
+
+**Physical elements (15)** — 명사구
+  - **rotor assembly**
+  - **stator assembly**
+  - **shaft**
+  - **rotor core**
+  - **stator core**
+  - **bearing assembly**
+  - **bearings**
+  - **frame**
+  - **frame outer portion**
+  - **frame support portion**
+  - **impeller**
+  - **heat sink assembly**  _(confidence: medium)_
+  - **magnet**  _(confidence: medium)_
+  - **adhesive**  _(confidence: low)_
+  - **C-shaped stator core**
+
+**Notes**
+  - _uncertain_: Role of 'adhesive' is unclear from abstracts; possibly used to bond stator core or bearings.
+  - _uncertain_: 'Magnet' appears in tfidf terms but not in shown abstracts; likely part of rotor core.
+  - _insufficient evidence_: Specific control electronics or sensor modules are not described in the provided excerpts.
+  - _insufficient evidence_: Detailed cooling airflow path beyond heat sink is not specified.
+
+</details>
+
+<details><summary><b>Cluster 10</b> &nbsp;|&nbsp; 130 patents &nbsp;|&nbsp; Cleaning appliances: dental fluid-jet devices and vacuum floor tools</summary>
+
+**Modules (5)**
+  - **handle module**
+  - **cleaning tool attachment module**
+  - **fluid delivery module**
+  - **fluid reservoir module**
+  - **floor tool module**  _(confidence: medium)_
+
+**Functional elements (6)** — 동사구
+  - **deliver a burst of working fluid to the teeth**
+  - **store working fluid**
+  - **receive working fluid from the fluid reservoir**
+  - **detachably connect the cleaning tool to the handle**
+  - **move fluid conduit about an axis**  _(confidence: medium)_
+  - **clean floors via suction**  _(confidence: medium)_
+
+**Physical elements (8)** — 명사구
+  - **handle**
+  - **cleaning tool**
+  - **nozzle**
+  - **stem**
+  - **fluid reservoir**
+  - **fluid delivery system**
+  - **moveable fluid conduit**
+  - **floor tool**  _(confidence: medium)_
+
+**Notes**
+  - _uncertain_: The cluster mixes dental cleaning appliances (handle, nozzle, fluid reservoir) with floor/vacuum cleaning appliances (floor tool, suction); these likely represent two distinct sub-domains under generic title 'CLEANING APPLIANCE'.
+  - _insufficient evidence_: Detail on motor/pump generating the burst of working fluid is not present in the provided abstracts.
+  - _insufficient evidence_: Detail on the floor tool's internal components (brush bar, etc.) is not visible in the provided abstracts.
+
+</details>
+
+<details><summary><b>Cluster 11</b> &nbsp;|&nbsp; 206 patents &nbsp;|&nbsp; Wearable air purification and air-treatment appliances</summary>
+
+**Modules (4)**
+  - **air filtration module**
+  - **airflow generation module**
+  - **head wearable ear/speaker assembly module**
+  - **hand dryer / drying module**  _(confidence: low)_
+
+**Functional elements (5)** — 동사구
+  - **create airflow**
+  - **filter air**
+  - **be worn over an ear of a user**
+  - **output sound to user**  _(confidence: medium)_
+  - **dry hands**  _(confidence: low)_
+
+**Physical elements (7)** — 명사구
+  - **filter assembly**
+  - **motor-driven impeller**
+  - **ear assembly**
+  - **first speaker assembly**
+  - **second speaker assembly**
+  - **fan assembly**  _(confidence: medium)_
+  - **hand dryer**  _(confidence: low)_
+
+**Notes**
+  - _uncertain_: Relationship between hand dryer/drying terms and the head wearable air purifier representative titles is unclear; the cluster may mix multiple Dyson air-treatment product families.
+  - _uncertain_: Role of 'water' and 'light' top terms is not supported by the example abstracts.
+  - _insufficient evidence_: hand dryer module - no abstract evidence in provided examples
+  - _insufficient evidence_: specific water-related or light-related components
+
+</details>
