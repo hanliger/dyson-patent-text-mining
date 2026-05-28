@@ -13,10 +13,16 @@ LLM 기반 제품공학 요소 추출 파이프라인.
 6. KMeans clustering (k=3..12 sweep, silhouette 기준 자동 선택)
 7. Cluster summary (distinctive term + representative title + example abstract)
 8. **Optional** LLM 기반 cluster label 제안
-9. **Optional** LLM 기반 module / functional element / physical element 추출
+9. **Optional** LLM 기반 제품공학 요소 추출
+   - module candidates
+   - functional elements (동사구)
+   - physical elements (명사구)
+   - function ↔ physical ↔ module mappings
+   - notes (`uncertain_items`, `insufficient_evidence`)
+10. 위 LLM 출력(JSONL)을 cluster별 평탄화 CSV 5종으로 변환 (Excel/Sheets에서 바로 필터링)
 
 LLM 호출은 `ANTHROPIC_API_KEY` 가 설정된 경우에만 동작한다.
-key 없이도 단계 1–7은 그대로 끝까지 실행된다.
+key 없이도 단계 1–7은 그대로 끝까지 실행된다. 단계 10은 LLM 출력이 있을 때만 실행된다.
 
 ## Repo 구조
 
