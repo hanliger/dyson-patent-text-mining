@@ -105,41 +105,32 @@ silhouette score는 k에 따라 단조 증가하지만 절대값이 매우 작�
 ### Mixed cluster sub-clustering (cluster 10, 11)
 
 cluster 10, 11은 LLM notes 단계에서 "여러 product family가 한 cluster에 섞였다"고 명확히 지적된 mixed cluster다.
-전체 k를 더 키우는 대신, 두 cluster의 문서만 분리해 **TF-IDF를 다시 학습 → KMeans `sub_k=2..8` sweep → silhouette 기준 best sub_k**를 잡았다.
+전체 k를 더 키우는 대신, 두 cluster의 문서만 분리해 **TF-IDF를 다시 학습 → KMeans `sub_k=2..8` sweep**으로 살펴봤다.
 
-| parent | n | best sub_k | sub-cluster silhouette (best) |
+sub-sweep silhouette도 parent와 마찬가지로 k에 따라 거의 단조 증가하기 때문에 argmax(cluster 10→sub_k=7, cluster 11→sub_k=8)는 너무 잘게 쪼개는 경향이 있다.
+그래서 LLM notes가 지적한 mixed 구조(cluster 10 = dental vs vacuum 둘, cluster 11 = wearable / hand-dryer / 기타 셋)에 맞춰 **`CHOSEN_SUB_K = {10: 2, 11: 3}`** 으로 고정했다. 노트북에서 이 값을 바꾸면 다른 granularity로 바로 살펴볼 수 있다.
+
+| parent | n | chosen sub_k | argmax sub_k in sweep |
 |----:|----:|----:|----:|
-| 10 | 130 | 7 | 0.083 |
-| 11 | 206 | 8 | 0.061 |
+| 10 | 130 | 2 (pinned) | 7 |
+| 11 | 206 | 3 (pinned) | 8 |
 
-sub_k에서 silhouette가 parent silhouette(≈0.028)보다 2~3배 높아진 점이, 이 두 cluster가 sub-sweep 단위에서 실제로 더 잘 분리됨을 뒷받침한다.
+**Cluster 10 → 2 sub-clusters** (top distinctive terms / 대표 title):
 
-**Cluster 10 → 7 sub-clusters** (top distinctive terms 일부):
+| comp id | n | 추정 sub-domain | 주요 term · 대표 title |
+|---|---:|---|---|
+| 10.0 | 29  | Dental cleaning appliance | working fluid · teeth · dental · fluid reservoir · CLEANING APPLIANCE |
+| 10.1 | 101 | Vacuum cleaner & floor tool | floor · vacuum · suction · floor tool · FLOOR TOOL FOR A VACUUM CLEANING APPLIANCE |
 
-| comp id | n | 주요 term |
-|---|---:|---|
-| 10.0 | 28 | working fluid · teeth · dental · fluid reservoir · dental cleaning |
-| 10.1 | 26 | floor tool · vacuum cleaning · suction nozzle |
-| 10.2 | 31 | bristle · attachment · brush · diffuser |
-| 10.3 | 23 | receptacle · longitudinal axis · surface cleaning |
-| 10.4 |  4 | canister · steering · rolling assembly |
-| 10.5 |  9 | floor care · decontamination · refrigerant · heat exchanger |
-| 10.6 |  9 | floor cleaner · dock · receiving unit · liquid |
+**Cluster 11 → 3 sub-clusters** (top distinctive terms / 대표 title):
 
-**Cluster 11 → 8 sub-clusters** (top distinctive terms 일부):
+| comp id | n | 추정 sub-domain | 주요 term · 대표 title |
+|---|---:|---|---|
+| 11.0 | 37  | Hand dryer / drying apparatus | hand dryer · air-knife · sink · drying · HAND DRYER / DRYING APPARATUS |
+| 11.1 | 47  | Air treatment / humidifier | water tank · humidifying · light · base body · AIR TREATMENT APPARATUS |
+| 11.2 | 122 | Wearable air purifier & filter assembly | wearable air purifier · filter assembly · airflow · WEARABLE AIR PURIFIER |
 
-| comp id | n | 주요 term |
-|---|---:|---|
-| 11.0 | 23 | water tank · humidifying · ultraviolet · moisture |
-| 11.1 | 38 | air purifier · head wearable · speaker assembly · headgear |
-| 11.2 | 24 | casing · cavity · drying · sleeve |
-| 11.3 | 28 | hand dryer · air-knife · sink · basin |
-| 11.4 | 13 | air delivery · mask · wearable air |
-| 11.5 | 19 | light source · domestic appliance · illuminate |
-| 11.6 | 27 | fan assembly · base body · stand · air outlets |
-| 11.7 | 34 | filter · filter medium · vacuum cleaner |
-
-전체 sub-cluster summary는 `outputs/sub_cluster_summary.csv`, 문서→sub-cluster 매핑은 `outputs/patent_subclusters.csv` 참고.
+전체 sub-cluster summary는 `outputs/sub_cluster_summary.csv`, 문서→sub-cluster 매핑은 `outputs/patent_subclusters.csv`, sub-sweep eval 곡선은 `outputs/sub_clustering_eval.csv` 참고.
 
 ## Cluster별 추출 결과 (LLM)
 
@@ -559,17 +550,12 @@ sub_k에서 silhouette가 parent silhouette(≈0.028)보다 2~3배 높아진 점
   - _insufficient evidence_: Detail on motor/pump generating the burst of working fluid is not present in the provided abstracts.
   - _insufficient evidence_: Detail on the floor tool's internal components (brush bar, etc.) is not visible in the provided abstracts.
 
-**Sub-clusters** (best sub_k = 7, silhouette 0.083 — `outputs/sub_cluster_summary.csv`)
+**Sub-clusters** (CHOSEN_SUB_K = 2, pinned — `outputs/sub_cluster_summary.csv`)
 
 | comp id | n | 추정 sub-domain | 대표 title / 주요 term |
 |---|---:|---|---|
-| 10.0 | 28 | Dental cleaning appliance | CLEANING APPLIANCE · working fluid · teeth · dental · fluid reservoir |
-| 10.1 | 26 | Floor tool for vacuum cleaner | FLOOR TOOL FOR A VACUUM CLEANING APPLIANCE · suction nozzle |
-| 10.2 | 31 | Brush/bristle attachment | ATTACHMENT FOR A VACUUM CLEANING APPLIANCE · bristle · carrier · diffuser |
-| 10.3 | 23 | Domestic surface cleaning / receptacle | DOMESTIC APPLIANCE · receptacle · longitudinal axis · side wall |
-| 10.4 |  4 | Canister vacuum + steering mechanism | CANISTER VACUUM CLEANER · steering · rolling assembly |
-| 10.5 |  9 | Self-cleaning vacuum (decontamination) | SELF-CLEANING VACUUM CLEANER · decontamination · refrigerant · heat exchanger |
-| 10.6 |  9 | Floor cleaner dock / liquid reservoir | FLOOR CLEANER DOCK · receiving unit · liquid · reservoir |
+| 10.0 | 29  | Dental cleaning appliance | CLEANING APPLIANCE · working fluid · teeth · dental · fluid reservoir |
+| 10.1 | 101 | Vacuum cleaner & floor tool | FLOOR TOOL FOR A VACUUM CLEANING APPLIANCE · floor · vacuum · suction · floor tool |
 
 </details>
 
@@ -603,17 +589,12 @@ sub_k에서 silhouette가 parent silhouette(≈0.028)보다 2~3배 높아진 점
   - _insufficient evidence_: hand dryer module - no abstract evidence in provided examples
   - _insufficient evidence_: specific water-related or light-related components
 
-**Sub-clusters** (best sub_k = 8, silhouette 0.061 — `outputs/sub_cluster_summary.csv`)
+**Sub-clusters** (CHOSEN_SUB_K = 3, pinned — `outputs/sub_cluster_summary.csv`)
 
 | comp id | n | 추정 sub-domain | 대표 title / 주요 term |
 |---|---:|---|---|
-| 11.0 | 23 | Humidifier / UV air treatment | AIR TREATMENT APPARATUS · water tank · humidifying · ultraviolet · moisture |
-| 11.1 | 38 | Wearable air purifier (headgear) | WEARABLE AIR PURIFIER · head wearable · speaker assembly · headgear |
-| 11.2 | 24 | Drying apparatus (casing/cavity) | DRYING APPARATUS · casing · cavity · sleeve · slot-like opening |
-| 11.3 | 28 | Hand dryer (basin/air-knife) | HAND DRYER · air-knife · sink · basin · spout |
-| 11.4 | 13 | Wearable air purifier (delivery mask) | WEARABLE AIR PURIFIER · delivery mask · air purification |
-| 11.5 | 19 | Self-cleaning domestic appliance (light/heat) | SELF-CLEANING DOMESTIC APPLIANCE · light source · illuminate · heating |
-| 11.6 | 27 | Stand fan assembly | FAN ASSEMBLY · base body · stand · air outlets |
-| 11.7 | 34 | Filter assembly (vacuum cleaner) | FILTER ASSEMBLY · filter medium · vacuum cleaner · biodegradable filter |
+| 11.0 | 37  | Hand dryer / drying apparatus | HAND DRYER · DRYING APPARATUS · hand dryer · air-knife · sink · drying |
+| 11.1 | 47  | Air treatment / humidifier | AIR TREATMENT APPARATUS · water tank · humidifying · light · base body |
+| 11.2 | 122 | Wearable air purifier & filter assembly | WEARABLE AIR PURIFIER · filter · filter assembly · wearable · airflow |
 
 </details>
