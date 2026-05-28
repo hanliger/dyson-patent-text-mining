@@ -29,7 +29,6 @@ key 없이도 단계 1–7은 그대로 끝까지 실행된다.
 │   ├── llm_cluster_label_prompt.txt      # cluster label 제안 prompt
 │   └── llm_product_engineering_prompt.txt# module/function/physical 추출 prompt
 └── outputs/                              # 노트북 실행 결과
-    ├── patent_text_base.csv
     ├── corpus_top_keywords.csv
     ├── title_top_keywords.csv
     ├── document_top_keywords.csv
@@ -39,7 +38,6 @@ key 없이도 단계 1–7은 그대로 끝까지 실행된다.
     ├── llm_cluster_summary_input.jsonl
     ├── llm_cluster_labels.jsonl
     ├── llm_product_engineering.jsonl
-    ├── llm_product_engineering_prompt.txt
     ├── cluster_product_engineering_overview.csv
     ├── cluster_modules.csv
     ├── cluster_functional_elements.csv
