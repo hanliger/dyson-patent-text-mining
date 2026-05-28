@@ -559,6 +559,18 @@ sub_k에서 silhouette가 parent silhouette(≈0.028)보다 2~3배 높아진 점
   - _insufficient evidence_: Detail on motor/pump generating the burst of working fluid is not present in the provided abstracts.
   - _insufficient evidence_: Detail on the floor tool's internal components (brush bar, etc.) is not visible in the provided abstracts.
 
+**Sub-clusters** (best sub_k = 7, silhouette 0.083 — `outputs/sub_cluster_summary.csv`)
+
+| comp id | n | 추정 sub-domain | 대표 title / 주요 term |
+|---|---:|---|---|
+| 10.0 | 28 | Dental cleaning appliance | CLEANING APPLIANCE · working fluid · teeth · dental · fluid reservoir |
+| 10.1 | 26 | Floor tool for vacuum cleaner | FLOOR TOOL FOR A VACUUM CLEANING APPLIANCE · suction nozzle |
+| 10.2 | 31 | Brush/bristle attachment | ATTACHMENT FOR A VACUUM CLEANING APPLIANCE · bristle · carrier · diffuser |
+| 10.3 | 23 | Domestic surface cleaning / receptacle | DOMESTIC APPLIANCE · receptacle · longitudinal axis · side wall |
+| 10.4 |  4 | Canister vacuum + steering mechanism | CANISTER VACUUM CLEANER · steering · rolling assembly |
+| 10.5 |  9 | Self-cleaning vacuum (decontamination) | SELF-CLEANING VACUUM CLEANER · decontamination · refrigerant · heat exchanger |
+| 10.6 |  9 | Floor cleaner dock / liquid reservoir | FLOOR CLEANER DOCK · receiving unit · liquid · reservoir |
+
 </details>
 
 <details><summary><b>Cluster 11</b> &nbsp;|&nbsp; 206 patents &nbsp;|&nbsp; Wearable air purification and air-treatment appliances</summary>
@@ -590,5 +602,18 @@ sub_k에서 silhouette가 parent silhouette(≈0.028)보다 2~3배 높아진 점
   - _uncertain_: Role of 'water' and 'light' top terms is not supported by the example abstracts.
   - _insufficient evidence_: hand dryer module - no abstract evidence in provided examples
   - _insufficient evidence_: specific water-related or light-related components
+
+**Sub-clusters** (best sub_k = 8, silhouette 0.061 — `outputs/sub_cluster_summary.csv`)
+
+| comp id | n | 추정 sub-domain | 대표 title / 주요 term |
+|---|---:|---|---|
+| 11.0 | 23 | Humidifier / UV air treatment | AIR TREATMENT APPARATUS · water tank · humidifying · ultraviolet · moisture |
+| 11.1 | 38 | Wearable air purifier (headgear) | WEARABLE AIR PURIFIER · head wearable · speaker assembly · headgear |
+| 11.2 | 24 | Drying apparatus (casing/cavity) | DRYING APPARATUS · casing · cavity · sleeve · slot-like opening |
+| 11.3 | 28 | Hand dryer (basin/air-knife) | HAND DRYER · air-knife · sink · basin · spout |
+| 11.4 | 13 | Wearable air purifier (delivery mask) | WEARABLE AIR PURIFIER · delivery mask · air purification |
+| 11.5 | 19 | Self-cleaning domestic appliance (light/heat) | SELF-CLEANING DOMESTIC APPLIANCE · light source · illuminate · heating |
+| 11.6 | 27 | Stand fan assembly | FAN ASSEMBLY · base body · stand · air outlets |
+| 11.7 | 34 | Filter assembly (vacuum cleaner) | FILTER ASSEMBLY · filter medium · vacuum cleaner · biodegradable filter |
 
 </details>
