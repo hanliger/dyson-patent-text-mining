@@ -113,6 +113,16 @@ jupyter notebook dyson_patent_text_mining.ipynb
 | 10 | 130 | Cleaning appliances: dental fluid-jet devices and vacuum floor tools |
 | 11 | 206 | Wearable air purification and air-treatment appliances |
 
+#### Sub-cluster (Section 9 결과)
+
+| comp id | n | label (LLM) |
+|---|---:|---|
+| 10.0 | 29  | Fluid-based dental cleaning appliance (oral irrigator) |
+| 10.1 | 101 | Floor tool / suction nozzle head for vacuum cleaning appliances |
+| 11.0 | 37  | Air-knife hand dryers |
+| 11.1 | 47  | Humidifying air treatment apparatus with integrated water supply |
+| 11.2 | 122 | Head-Wearable Air Purifier with Integrated Audio |
+
 ### k 탐색 범위와 CHOSEN_K
 
 전체 corpus에 대한 KMeans sweep을 `k=3..25` 로 확장해 두었다.
@@ -816,5 +826,193 @@ sub-sweep silhouette도 parent와 마찬가지로 k에 따라 거의 단조 증�
   - _insufficient evidence_: No description of specific filter media types.
 
 </details>
+
+</details>
+
+## Sub-cluster별 추출 결과 (LLM)
+
+Section 9에서 mixed cluster 10·11을 분리해 얻은 5개 sub-cluster에 대한 module / functional element / physical element 추출을 top-level로 정리한 섹션.
+(Cluster 10·11 details 내부의 nested 블록과 동일한 내용 — 빠르게 sub-domain 단위로 훑어보기 위한 단축 view)
+
+<details><summary><b>Sub-cluster 10.0</b> &nbsp;|&nbsp; 29 patents &nbsp;|&nbsp; Fluid-based dental cleaning appliance (oral irrigator)</summary>
+
+**Modules (4)**
+  - **fluid reservoir module**
+  - **fluid delivery module**
+  - **handle module**
+  - **control module**  _(confidence: medium)_
+
+**Functional elements (6)** — 동사구
+  - **store working fluid**
+  - **receive working fluid from reservoir**
+  - **deliver working fluid to teeth**
+  - **deliver burst of working fluid**
+  - **actuate fluid delivery**
+  - **move relative to handle along teeth**  _(confidence: medium)_
+
+**Physical elements (6)** — 명사구
+  - **handle**
+  - **fluid reservoir**
+  - **fluid delivery system**
+  - **nozzle**
+  - **control circuit**
+  - **working fluid**
+
+**Notes**
+  - _uncertain_: Exact input type triggering control circuit (e.g., sensor, button) is not specified in the provided abstracts.
+  - _insufficient evidence_: No explicit evidence of pump, power source, or battery components, though typical for such appliances.
+
+</details>
+
+<details><summary><b>Sub-cluster 10.1</b> &nbsp;|&nbsp; 101 patents &nbsp;|&nbsp; Floor tool / suction nozzle head for vacuum cleaning appliances</summary>
+
+**Modules (4)**
+  - **floor tool head module**
+  - **suction nozzle module**
+  - **cleaning element support module**
+  - **conduit and wand connection module**
+
+**Functional elements (7)** — 동사구
+  - **support a cleaning element**
+  - **draw air through a suction nozzle**
+  - **engage a floor surface**
+  - **define a suction chamber**
+  - **convey air to the vacuum cleaning appliance**
+  - **attach the floor tool to the appliance**
+  - **clean along an edge**  _(confidence: medium)_
+
+**Physical elements (11)** — 명사구
+  - **main body**
+  - **support member**
+  - **cleaning element**
+  - **suction nozzle**
+  - **suction chamber**
+  - **surface engaging skirt**
+  - **conduit**
+  - **neck**  _(confidence: medium)_
+  - **plug elements**
+  - **wand**  _(confidence: medium)_
+  - **edge of the supporting member**
+
+**Notes**
+  - _uncertain_: Role of 'neck' is referenced but not detailed in abstracts
+  - _uncertain_: 'Wand' appears in tfidf terms but is not explicitly described in provided abstracts
+  - _insufficient evidence_: No clear evidence of motor, brush bar, agitator, or rotating elements within the floor tool from the provided text
+
+</details>
+
+<details><summary><b>Sub-cluster 11.0</b> &nbsp;|&nbsp; 37 patents &nbsp;|&nbsp; Air-knife hand dryers</summary>
+
+**Modules (6)**
+  - **airflow generation module**
+  - **air discharge / air-knife module**
+  - **casing and hand-receiving cavity module**
+  - **vibration isolation mounting module**  _(confidence: medium)_
+  - **air intake module**  _(confidence: medium)_
+  - **sink-integrated hand dryer module**  _(confidence: medium)_
+
+**Functional elements (8)** — 동사구
+  - **dry user's hands**
+  - **generate airflow**
+  - **drive the fan**
+  - **discharge airflow**
+  - **wipe water from user's hands**
+  - **receive an object (hands)**
+  - **draw in air**  _(confidence: medium)_
+  - **isolate vibration of the fan unit**  _(confidence: medium)_
+
+**Physical elements (11)** — 명사구
+  - **casing**
+  - **cavity**
+  - **motor-driven fan unit**
+  - **motor**
+  - **fan**
+  - **air outlet**
+  - **slot-like opening**
+  - **air-knife**
+  - **air intakes**  _(confidence: medium)_
+  - **springs**  _(confidence: medium)_
+  - **sink**
+
+**Notes**
+  - _uncertain_: Exact spring mounting configuration is truncated in abstract.
+  - _uncertain_: Number and orientation of air-knife slots beyond 'two elongate' is unclear.
+  - _insufficient evidence_: No explicit evidence of heating element or air heating function.
+  - _insufficient evidence_: No explicit evidence of sensor-based hand detection or automatic control.
+  - _insufficient evidence_: No explicit evidence of filtration component.
+
+</details>
+
+<details><summary><b>Sub-cluster 11.1</b> &nbsp;|&nbsp; 47 patents &nbsp;|&nbsp; Humidifying air treatment apparatus with integrated water supply</summary>
+
+**Modules (4)**
+  - **airflow generation module**
+  - **humidification / moisture introduction module**
+  - **water supply and tank module**
+  - **body / housing module**
+
+**Functional elements (6)** — 동사구
+  - **generate an air flow**
+  - **introduce water vapour into the air flow**
+  - **surround the air flow generator and the moisture source**
+  - **supply water to the moisture source**  _(confidence: medium)_
+  - **treat air**  _(confidence: medium)_
+  - **humidify air**  _(confidence: medium)_
+
+**Physical elements (9)** — 명사구
+  - **air flow generator**
+  - **moisture source**
+  - **body**
+  - **water tank**
+  - **water supply system**
+  - **chamber**  _(confidence: medium)_
+  - **base**  _(confidence: medium)_
+  - **stand**  _(confidence: low)_
+  - **light source**  _(confidence: low)_
+
+**Notes**
+  - _uncertain_: Role of 'light' / light source is unclear from provided evidence
+  - _uncertain_: 'stand' and 'base' may refer to structural support but no explicit function described
+  - _uncertain_: 'chamber' could be water chamber or air chamber; not disambiguated in evidence
+  - _insufficient evidence_: No explicit mention of filtration, heating, or sensing functions
+  - _insufficient evidence_: Detailed structure of the water supply system beyond the tank is truncated
+
+</details>
+
+<details><summary><b>Sub-cluster 11.2</b> &nbsp;|&nbsp; 122 patents &nbsp;|&nbsp; Head-Wearable Air Purifier with Integrated Audio</summary>
+
+**Modules (5)**
+  - **filter assembly module**
+  - **airflow generation module**
+  - **head-worn carrier module**
+  - **air delivery nozzle module**  _(confidence: medium)_
+  - **speaker (audio) module**
+
+**Functional elements (5)** — 동사구
+  - **generate airflow**
+  - **filter air**
+  - **deliver filtered airflow to user**
+  - **be worn on the head**
+  - **provide audio output**  _(confidence: medium)_
+
+**Physical elements (12)** — 명사구
+  - **filter assembly**
+  - **filter**
+  - **impeller**
+  - **motor-driven impeller**
+  - **airflow generator**
+  - **first speaker assembly**
+  - **second speaker assembly**
+  - **headgear**
+  - **nozzle assembly**
+  - **conduit**  _(confidence: medium)_
+  - **housing**  _(confidence: low)_
+  - **mask**  _(confidence: low)_
+
+**Notes**
+  - _uncertain_: Role of 'mask' and 'housing' is not clearly described in the provided abstracts; they appear only in tfidf terms.
+  - _uncertain_: Whether speaker assemblies also serve as audio output devices vs. just structural housings is not fully confirmed in the abstracts.
+  - _insufficient evidence_: No explicit evidence for control electronics, battery, or sensors despite being typical of such devices.
+  - _insufficient evidence_: No description of specific filter media types.
 
 </details>
