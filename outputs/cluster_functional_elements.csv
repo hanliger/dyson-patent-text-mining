@@ -1,0 +1,87 @@
+﻿cluster_id,cluster_label,function,evidence,confidence
+0,Thin-film solid-state battery fabrication via sputter deposition,store energy,ENERGY STORAGE DEVICE; stack for an energy storage device,high
+0,Thin-film solid-state battery fabrication via sputter deposition,deposit electrolyte material,depositing an electrolyte material on...,high
+0,Thin-film solid-state battery fabrication via sputter deposition,deposit electrode material on substrate,depositing a first material over an exposed portion of the first electrode layer,high
+0,Thin-film solid-state battery fabrication via sputter deposition,provide electrode layer on substrate,providing a first electrode layer on a first portion of a substrate,high
+0,Thin-film solid-state battery fabrication via sputter deposition,separate adjacent stacks with a groove,first and second stacks for an energy storage device with a groove therebetween,high
+0,Thin-film solid-state battery fabrication via sputter deposition,conduct ions between electrodes,an electrolyte layer between the first electrode layer and the second electrode layer,medium
+0,Thin-film solid-state battery fabrication via sputter deposition,sputter deposit layers,"top title terms include 'sputter deposition', 'sputter', 'deposition'",medium
+0,Thin-film solid-state battery fabrication via sputter deposition,form solid-state electrochemical cell,METHOD OF MAKING A COMPONENT FOR A SOLID-STATE ELECTROCHEMICAL CELL,high
+1,Haircare/Styling Appliances with Airflow Attachments,generate airflow,an airflow generator for generating an airflow from the air inlet to the air outlet,high
+1,Haircare/Styling Appliances with Airflow Attachments,receive air,an air inlet,high
+1,Haircare/Styling Appliances with Airflow Attachments,emit airflow,an air outlet for emitting the airflow,high
+1,Haircare/Styling Appliances with Airflow Attachments,attach accessory to haircare appliance,an attachment for a haircare appliance,high
+1,Haircare/Styling Appliances with Airflow Attachments,style hair,hair styling appliance,high
+1,Haircare/Styling Appliances with Airflow Attachments,guide airflow along curved surface,a curved surface adjacent to and downstream of the air outlet,medium
+1,Haircare/Styling Appliances with Airflow Attachments,diffuse airflow,diffuser (top title term),medium
+2,Handheld Appliance Fluid Flow Architecture (Hairdryer-class),admit fluid into the appliance,a body having a fluid inlet for admitting fluid into the appliance,high
+2,Handheld Appliance Fluid Flow Architecture (Hairdryer-class),emit fluid flow from the appliance,a fluid outlet for emitting the fluid flow from the appliance,high
+2,Handheld Appliance Fluid Flow Architecture (Hairdryer-class),convey fluid from inlet to outlet,a fluid flow path extending through the duct from a first fluid inlet of the appliance to a first fluid outlet of the appliance,high
+2,Handheld Appliance Fluid Flow Architecture (Hairdryer-class),line the duct with a material,a duct lined with a material,high
+2,Handheld Appliance Fluid Flow Architecture (Hairdryer-class),guide fluid flow in an axial direction,a fluid flow path extending through the body in an axial direction,high
+2,Handheld Appliance Fluid Flow Architecture (Hairdryer-class),heat fluid,top title term 'heater assembly' associated with hairdryer hand held appliance,medium
+2,Handheld Appliance Fluid Flow Architecture (Hairdryer-class),attach accessory to appliance,top title terms 'attachment' and 'attachment hand' in hand held appliance cluster,medium
+2,Handheld Appliance Fluid Flow Architecture (Hairdryer-class),clean,top title term 'cleaning appliance' in cluster,low
+3,Sensor-driven smart vacuum cleaners and mobile cleaning robots,generate airflow,a vacuum motor,high
+3,Sensor-driven smart vacuum cleaners and mobile cleaning robots,agitate surface debris,a cleaner head comprising an agitator,high
+3,Sensor-driven smart vacuum cleaners and mobile cleaning robots,sense motion and orientation,first sensor signals based on sensed motion and orientation of the vacuum cleaner,high
+3,Sensor-driven smart vacuum cleaners and mobile cleaning robots,generate sensor signals,sensors configured to generate sensor signals associated with the vacuum cleaner,high
+3,Sensor-driven smart vacuum cleaners and mobile cleaning robots,process sensor signals,a controller configured to: process the generated sensor signals,high
+3,Sensor-driven smart vacuum cleaners and mobile cleaning robots,determine surface type,process the generated sensor signals using a surface type model ... to determine a type,high
+3,Sensor-driven smart vacuum cleaners and mobile cleaning robots,perform diagnostics,one or more diagnostic sensors,medium
+4,Vacuum Cleaner Head with Agitator/Brush Bar,define a suction chamber,a body that defines a suction chamber,high
+4,Vacuum Cleaner Head with Agitator/Brush Bar,engage a surface to be cleaned,suction inlet for engaging a surface to be cleaned,high
+4,Vacuum Cleaner Head with Agitator/Brush Bar,provide fluid connection to a suction generator,an outlet for fluid connection to a suction generator of a vacuum cleaner,high
+4,Vacuum Cleaner Head with Agitator/Brush Bar,illuminate debris on a work surface,a laser diode for illuminating debris located upon a region of a work surface,high
+4,Vacuum Cleaner Head with Agitator/Brush Bar,agitate surface debris,an agitator mounted within the housing,high
+4,Vacuum Cleaner Head with Agitator/Brush Bar,drive the agitator about an axis,a drive mechanism for driving the agitator about a first axis A,high
+4,Vacuum Cleaner Head with Agitator/Brush Bar,rotate the drive mechanism relative to the housing,The drive mechanism is mounted to the housing for rotation about a second axis R,medium
+4,Vacuum Cleaner Head with Agitator/Brush Bar,mount agitator elements on opposing sides of the housing,"a first side on which a first agitator element is mounted for rotation, and a second side on which a second...",medium
+4,Vacuum Cleaner Head with Agitator/Brush Bar,separate dirt from airflow,"title terms 'dirt separator', 'separator vacuum'",low
+5,Surface treating appliance main body & support assembly architecture,generate flow of fluid,a device generating a flow of fluid in the form of a motor and fan,high
+5,Surface treating appliance main body & support assembly architecture,treat a surface,surface treating appliance ... a surface treating head,high
+5,Surface treating appliance main body & support assembly architecture,roll main body along a surface,rollably mounted to the main body for allowing the main body to be rolled along a surface,high
+5,Surface treating appliance main body & support assembly architecture,support the main body,a support assembly ... rollably mounted to the main body,high
+5,Surface treating appliance main body & support assembly architecture,operate appliance by user,a main body having a user operable handle,high
+5,Surface treating appliance main body & support assembly architecture,convey air between components,A hose and wand assembly,medium
+5,Surface treating appliance main body & support assembly architecture,switch airflow path,a rotary change over valve,medium
+6,Multi-stage cyclonic dirt/dust separation for vacuum cleaners,separate dirt and dust from airflow,separating apparatus for separating dirt and dust from an airflow,high
+6,Multi-stage cyclonic dirt/dust separation for vacuum cleaners,perform cyclonic separation,cyclonic separating unit including at least one first cyclone,high
+6,Multi-stage cyclonic dirt/dust separation for vacuum cleaners,perform multistage separation,first cyclonic separating unit ... second cyclonic separating unit located downstream,high
+6,Multi-stage cyclonic dirt/dust separation for vacuum cleaners,collect dust,annular dust collecting chamber,high
+6,Multi-stage cyclonic dirt/dust separation for vacuum cleaners,admit dirty air,a dirty air inlet,high
+6,Multi-stage cyclonic dirt/dust separation for vacuum cleaners,discharge clean air,a clean air outlet,high
+6,Multi-stage cyclonic dirt/dust separation for vacuum cleaners,guide airflow from inlet to outlet,an airflow path leading from the air inlet to the air outlet,high
+7,Bladeless nozzle-based fan assemblies,create an air current,A fan assembly for creating an air current,high
+7,Bladeless nozzle-based fan assemblies,rotate the impeller,a motor for rotating the impeller,high
+7,Bladeless nozzle-based fan assemblies,generate air flow from inlet to outlet,create an air flow passing from the air inlet to the air outlet,high
+7,Bladeless nozzle-based fan assemblies,receive air flow from interior passage,a mouth for receiving the air flow from the interior passage,high
+7,Bladeless nozzle-based fan assemblies,emit air flow,through which the air flow is emitted,high
+7,Bladeless nozzle-based fan assemblies,humidify air,top title term 'humidifying',low
+8,Brushless (permanent-magnet) motor control via winding excitation,control a brushless motor,A method of controlling a brushless motor,high
+8,Brushless (permanent-magnet) motor control via winding excitation,excite a motor winding with a voltage,exciting a winding of the motor with a voltage,high
+8,Brushless (permanent-magnet) motor control via winding excitation,freewheel the winding,freewheeling the winding when current in the winding exceeds a threshold,high
+8,Brushless (permanent-magnet) motor control via winding excitation,sense winding current,current in the winding exceeds a threshold,high
+8,Brushless (permanent-magnet) motor control via winding excitation,rectify an alternating voltage,rectifying an alternating voltage to provide a rectified voltage,high
+8,Brushless (permanent-magnet) motor control via winding excitation,continue exciting winding for an overrun period,then continuing to excite the winding for an overrun period,high
+8,Brushless (permanent-magnet) motor control via winding excitation,terminate excitation after a timeout period,after the winding has been excited for a timeout period,high
+8,Brushless (permanent-magnet) motor control via winding excitation,provide rectified voltage with ripple,rectified voltage having a ripple of at least 50%,high
+9,Brushless Motor / Compressor Rotor-Stator Assemblies,rotate relative to the stator,a rotor assembly rotatable relative to the stator assembly,high
+9,Brushless Motor / Compressor Rotor-Stator Assemblies,house the stator and rotor assemblies,a frame within which the stator assembly and the rotor assembly are housed,high
+9,Brushless Motor / Compressor Rotor-Stator Assemblies,support the rotor shaft,"shaft, first and second bearings... bearing assembly being mounted to the frame",high
+9,Brushless Motor / Compressor Rotor-Stator Assemblies,mount the bearing assembly to the frame,the bearing assembly being mounted to the frame,high
+9,Brushless Motor / Compressor Rotor-Stator Assemblies,move air via impeller rotation,"rotor assembly comprising a shaft, an impeller",medium
+9,Brushless Motor / Compressor Rotor-Stator Assemblies,dissipate heat,heat sink assembly... secured to the bearing assembly,medium
+9,Brushless Motor / Compressor Rotor-Stator Assemblies,compress fluid,"A compressor that includes a rotor assembly, a stator assembly and a heat sink assembly",medium
+9,Brushless Motor / Compressor Rotor-Stator Assemblies,bond components with adhesive,top tfidf term 'adhesive' appearing across cluster,low
+10,Cleaning appliances: dental fluid-jet devices and vacuum floor tools,deliver a burst of working fluid to the teeth,a nozzle for delivering a burst of working fluid to the teeth of a user,high
+10,Cleaning appliances: dental fluid-jet devices and vacuum floor tools,store working fluid,a fluid reservoir for storing a working fluid,high
+10,Cleaning appliances: dental fluid-jet devices and vacuum floor tools,receive working fluid from the fluid reservoir,a fluid delivery system for receiving working fluid from the fluid reservoir,high
+10,Cleaning appliances: dental fluid-jet devices and vacuum floor tools,detachably connect the cleaning tool to the handle,a cleaning tool detachably connected to the handle,high
+10,Cleaning appliances: dental fluid-jet devices and vacuum floor tools,move fluid conduit about an axis,a moveable fluid conduit which is moveable about an axis,medium
+10,Cleaning appliances: dental fluid-jet devices and vacuum floor tools,clean floors via suction,"Top terms 'floor tool', 'vacuum cleaning appliance', 'suction'",medium
+11,Wearable air purification and air-treatment appliances,create airflow,a motor-driven impeller for creating an airflow through the filter assembly,high
+11,Wearable air purification and air-treatment appliances,filter air,creating an airflow through the filter assembly to obtain a filtered airflow downstream of the filter assembly,high
+11,Wearable air purification and air-treatment appliances,be worn over an ear of a user,an ear assembly arranged to be worn over; speaker assembly arranged to be worn over a first ear of a user,high
+11,Wearable air purification and air-treatment appliances,output sound to user,a first speaker assembly and a second speaker assembly,medium
+11,Wearable air purification and air-treatment appliances,dry hands,top terms include 'hand dryer' and 'drying',low

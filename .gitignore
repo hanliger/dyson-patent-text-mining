@@ -1,0 +1,14 @@
+# Environment / secrets
+.env
+.env.*
+*.pem
+
+# Python
+__pycache__/
+*.pyc
+.ipynb_checkpoints/
+
+# Local tooling
+.claude/
+.vscode/
+.idea/
