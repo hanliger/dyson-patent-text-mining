@@ -10,19 +10,20 @@ LLM 기반 제품공학 요소 추출 파이프라인.
 3. 전처리 (소문자, 구두점/숫자 제거, 일반 특허 boilerplate stopword만 제거)
 4. TF-IDF 기반 keyword 추출 (1–3 gram, 전체 + title only)
 5. WordCloud (전체 / title only / cluster별)
-6. KMeans clustering (k=3..12 sweep, silhouette 기준 자동 선택)
+6. KMeans clustering (k=3..25 sweep, k=12 pinned — silhouette은 단조 증가하므로 argmax는 noisy)
 7. Cluster summary (distinctive term + representative title + example abstract)
-8. **Optional** LLM 기반 cluster label 제안
-9. **Optional** LLM 기반 제품공학 요소 추출
-   - module candidates
-   - functional elements (동사구)
-   - physical elements (명사구)
-   - function ↔ physical ↔ module mappings
-   - notes (`uncertain_items`, `insufficient_evidence`)
-10. 위 LLM 출력(JSONL)을 cluster별 평탄화 CSV 5종으로 변환 (Excel/Sheets에서 바로 필터링)
+8. 혼합 cluster(10, 11)에 대한 sub-clustering — 해당 cluster 문서만으로 TF-IDF 재학습 + KMeans `sub_k=2..8` sweep
+9. **Optional** LLM 기반 cluster label 제안
+10. **Optional** LLM 기반 제품공학 요소 추출
+    - module candidates
+    - functional elements (동사구)
+    - physical elements (명사구)
+    - function ↔ physical ↔ module mappings
+    - notes (`uncertain_items`, `insufficient_evidence`)
+11. 위 LLM 출력(JSONL)을 cluster별 평탄화 CSV 5종으로 변환 (Excel/Sheets에서 바로 필터링)
 
 LLM 호출은 `ANTHROPIC_API_KEY` 가 설정된 경우에만 동작한다.
-key 없이도 단계 1–7은 그대로 끝까지 실행된다. 단계 10은 LLM 출력이 있을 때만 실행된다.
+key 없이도 단계 1–8은 그대로 끝까지 실행된다. 단계 11은 LLM 출력이 있을 때만 실행된다.
 
 ## Repo 구조
 
@@ -41,6 +42,9 @@ key 없이도 단계 1–7은 그대로 끝까지 실행된다. 단계 10은 LLM
     ├── clustering_eval.csv
     ├── patent_clusters.csv
     ├── cluster_summary.csv
+    ├── sub_clustering_eval.csv               # cluster 10, 11 sub-sweep
+    ├── sub_cluster_summary.csv               # sub-cluster별 top term / 대표 title
+    ├── patent_subclusters.csv                # cluster 10, 11 문서의 sub-cluster 매핑
     ├── llm_cluster_summary_input.jsonl
     ├── llm_cluster_labels.jsonl
     ├── llm_product_engineering.jsonl
@@ -91,6 +95,51 @@ jupyter notebook dyson_patent_text_mining.ipynb
 | 9 |  58 | Brushless Motor / Compressor Rotor-Stator Assemblies |
 | 10 | 130 | Cleaning appliances: dental fluid-jet devices and vacuum floor tools |
 | 11 | 206 | Wearable air purification and air-treatment appliances |
+
+### k 탐색 범위와 CHOSEN_K
+
+전체 corpus에 대한 KMeans sweep을 `k=3..25` 로 확장해 두었다.
+silhouette score는 k에 따라 단조 증가하지만 절대값이 매우 작아 (k=3 ≈ 0.013, k=12 ≈ 0.028, k=25 ≈ 0.043) argmax는 noisy하다.
+그래서 노트북은 `CHOSEN_K = 12`로 명시적으로 고정해, 기존 LLM 라벨링 결과 및 cluster 10·11에 대한 sub-clustering ID 매핑과 호환되도록 했다.
+
+### Mixed cluster sub-clustering (cluster 10, 11)
+
+cluster 10, 11은 LLM notes 단계에서 "여러 product family가 한 cluster에 섞였다"고 명확히 지적된 mixed cluster다.
+전체 k를 더 키우는 대신, 두 cluster의 문서만 분리해 **TF-IDF를 다시 학습 → KMeans `sub_k=2..8` sweep → silhouette 기준 best sub_k**를 잡았다.
+
+| parent | n | best sub_k | sub-cluster silhouette (best) |
+|----:|----:|----:|----:|
+| 10 | 130 | 7 | 0.083 |
+| 11 | 206 | 8 | 0.061 |
+
+sub_k에서 silhouette가 parent silhouette(≈0.028)보다 2~3배 높아진 점이, 이 두 cluster가 sub-sweep 단위에서 실제로 더 잘 분리됨을 뒷받침한다.
+
+**Cluster 10 → 7 sub-clusters** (top distinctive terms 일부):
+
+| comp id | n | 주요 term |
+|---|---:|---|
+| 10.0 | 28 | working fluid · teeth · dental · fluid reservoir · dental cleaning |
+| 10.1 | 26 | floor tool · vacuum cleaning · suction nozzle |
+| 10.2 | 31 | bristle · attachment · brush · diffuser |
+| 10.3 | 23 | receptacle · longitudinal axis · surface cleaning |
+| 10.4 |  4 | canister · steering · rolling assembly |
+| 10.5 |  9 | floor care · decontamination · refrigerant · heat exchanger |
+| 10.6 |  9 | floor cleaner · dock · receiving unit · liquid |
+
+**Cluster 11 → 8 sub-clusters** (top distinctive terms 일부):
+
+| comp id | n | 주요 term |
+|---|---:|---|
+| 11.0 | 23 | water tank · humidifying · ultraviolet · moisture |
+| 11.1 | 38 | air purifier · head wearable · speaker assembly · headgear |
+| 11.2 | 24 | casing · cavity · drying · sleeve |
+| 11.3 | 28 | hand dryer · air-knife · sink · basin |
+| 11.4 | 13 | air delivery · mask · wearable air |
+| 11.5 | 19 | light source · domestic appliance · illuminate |
+| 11.6 | 27 | fan assembly · base body · stand · air outlets |
+| 11.7 | 34 | filter · filter medium · vacuum cleaner |
+
+전체 sub-cluster summary는 `outputs/sub_cluster_summary.csv`, 문서→sub-cluster 매핑은 `outputs/patent_subclusters.csv` 참고.
 
 ## Cluster별 추출 결과 (LLM)
 
